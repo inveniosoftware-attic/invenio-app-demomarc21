@@ -68,7 +68,9 @@ extras_require = {
 }
 
 extras_require['all'] = []
-for reqs in extras_require.values():
+for name, reqs in extras_require.items():
+    if name in ('mysql', 'postgresql', 'elasticsearch2', 'elasticsearch5'):
+        continue
     extras_require['all'].extend(reqs)
 
 setup_requires = [
@@ -93,7 +95,7 @@ install_requires = [
     # Auth bundle
     'invenio-access>=1.0.0a11,<1.1.0',
     'invenio-accounts>=1.0.0b3,<1.1.0',
-    'invenio-oauth2server>=1.0.0a14,<1.1.0',
+    'invenio-oauth2server>=1.0.0a15,<1.1.0',
     'invenio-oauthclient>=1.0.0a12,<1.1.0',
     'invenio-userprofiles>=1.0.0a9,<1.1.0',
     # Metadata bundle
@@ -106,10 +108,10 @@ install_requires = [
     'invenio-records>=1.0.0b1,<1.1.0',
     'invenio-search-ui>=1.0.0a6,<1.1.0',
     'invenio-search>=1.0.0a9,<1.1.0',
-    # Files bundle
-    'invenio-files-rest>=1.0.0a14,<1.1.0',
-    'invenio-previewer>=1.0.0a10,<1.1.0',
-    'invenio-records-files>=1.0.0a8,<1.1.0',
+    # # Files bundle
+    # 'invenio-files-rest>=1.0.0a14,<1.1.0',
+    # 'invenio-previewer>=1.0.0a10,<1.1.0',
+    # 'invenio-records-files>=1.0.0a8,<1.1.0',
     # MARC21-based ILS
     'invenio-app>=1.0.0a1,<1.1.0',
     'invenio-marc21>=1.0.0a4,<1.1.0',
