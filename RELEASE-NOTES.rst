@@ -1,8 +1,8 @@
-========================
- Invenio-App-ILS v1.0.0
-========================
+==========================
+ Invenio-App-ILS v1.0.0a1
+==========================
 
-Invenio-App-ILS v1.0.0 was released on TBD, 2017.
+Invenio-App-ILS v1.0.0a1 was released on March 12, 2017.
 
 About
 -----
@@ -19,7 +19,7 @@ What's new
 Installation
 ------------
 
-   $ pip install invenio-app-ils==1.0.0
+   $ pip install invenio-app-ils==1.0.0a1
 
 Documentation
 -------------
