@@ -42,6 +42,7 @@ def _(x):
     """Identity function used to trigger string extraction."""
     return x
 
+
 # I18N
 # ====
 #: Default language
@@ -99,11 +100,6 @@ RECORDS_REST_SORT_OPTIONS = dict(
             default_order='asc',
             order=2,
         ),
-        title=dict(
-            fields=['title_statement.title', ],
-            title='Title',
-            order=3,
-        ),
     )
 )
 
@@ -114,14 +110,36 @@ RECORDS_REST_DEFAULT_SORT = dict(
 
 #: Defined facets for records REST API.
 RECORDS_REST_FACETS = dict(
-    records=dict(
+    marc21=dict(
         aggs=dict(
-            author=dict(
-                terms=dict(field="main_entry_personal_name.personal_name"),
+            identifier=dict(
+                terms=dict(
+                    field='other_standard_identifier.source_of_number_or_code'
+                ),
+            ),
+            language=dict(
+                terms=dict(
+                    field=('language_code.language_code_of_text_sound_track_or'
+                           '_separate_title')
+                )
+            ),
+            affiliation=dict(
+                terms=dict(
+                    field='main_entry_personal_name.affiliation'
+                )
             ),
         ),
         post_filters=dict(
-            author=terms_filter('main_entry_personal_name.personal_name'),
+            identifier=terms_filter(
+                'other_standard_identifier.source_of_number_or_code'
+            ),
+            language=terms_filter(
+                ('language_code.language_code_of_text_sound_track_or'
+                 '_separate_title')
+            ),
+            affiliation=terms_filter(
+                'main_entry_personal_name.affiliation'
+            ),
         )
     )
 )
