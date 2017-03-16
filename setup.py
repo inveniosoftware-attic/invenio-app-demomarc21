@@ -104,7 +104,7 @@ install_requires = [
     'invenio-oaiserver>=1.0.0a12,<1.1.0',
     'invenio-pidstore>=1.0.0b1,<1.1.0',
     'invenio-records-rest>=1.0.0a18,<1.1.0',
-    'invenio-records-ui>=1.0.0a8,<1.1.0',
+    'invenio-records-ui>=1.0.0a9,<1.1.0',
     'invenio-records>=1.0.0b1,<1.1.0',
     'invenio-search-ui>=1.0.0a6,<1.1.0',
     'invenio-search>=1.0.0a9,<1.1.0',
@@ -114,7 +114,7 @@ install_requires = [
     # 'invenio-records-files>=1.0.0a8,<1.1.0',
     # MARC21-based ILS
     'invenio-app>=1.0.0a1,<1.1.0',
-    'invenio-marc21>=1.0.0a4,<1.1.0',
+    'invenio-marc21>=1.0.0a5,<1.1.0',
 ]
 
 packages = find_packages()

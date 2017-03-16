@@ -29,7 +29,8 @@ from __future__ import absolute_import, print_function
 import copy
 from datetime import timedelta
 
-from invenio_marc21.config import MARC21_REST_ENDPOINTS
+from invenio_marc21.config import MARC21_REST_ENDPOINTS, MARC21_UI_ENDPOINTS, \
+    MARC21_UI_EXPORT_FORMATS
 from invenio_records_rest.facets import terms_filter
 
 
@@ -71,52 +72,13 @@ COLLECT_STORAGE = 'flask_collect.storage.file'
 
 # Records configuration
 # =====================
-#: Records export format and serializer configuration.
-RECORDS_EXPORTFORMATS = {
-    'json': dict(
-        title='JSON',
-        serializer='invenio_marc21.serializers.json_v1_response',
-        order=1,
-    ),
-    'marc21': dict(
-        title='MARCXML',
-        serializer='invenio_marc21.serializers.marcxml_v1',
-        order=2,
-    ),
-    'mods': dict(
-        title='MODS',
-        serializer='invenio_marc21.serializers.mods_v1',
-        order=3,
-    ),
-    'dc': dict(
-        title='DublinCore',
-        serializer='invenio_marc21.serializers.dublincore_v1',
-        order=4,
-    )
-}
-
 #: Records UI configuration
-# TODO: Remove once Invenio-MARC21 v1.0.0a5 is out.
-RECORDS_UI_ENDPOINTS = {
-    "recid": {
-        "pid_type": "recid",
-        "route": "/records/<pid_value>",
-        "template": "invenio_records_ui/detail.html",
-    },
-    "recid_export": {
-        "pid_type": "recid",
-        "route": "/record/<pid_value>/export/<any({0}):format>".format(
-            ", ".join(list(RECORDS_EXPORTFORMATS.keys()))),
-        "template": "invenio_records_ui/export.html",
-        "view_imp": "invenio_records_ui.views.records_ui_export",
-        "record_class": "invenio_records_files.api:Record",
-    }
-}
-
-MARC21_UI_ENDPOINTS = copy.deepcopy(RECORDS_UI_ENDPOINTS)
-MARC21_UI_ENDPOINTS['recid']['template'] = 'invenio_marc21/detail.html'
-MARC21_UI_ENDPOINTS['recid_export']['template'] = 'invenio_marc21/export.html'
+RECORDS_UI_ENDPOINTS = {}
 RECORDS_UI_ENDPOINTS.update(MARC21_UI_ENDPOINTS)
+
+#: Records UI export format and serializer configuration.
+RECORDS_UI_EXPORT_FORMATS = {}
+RECORDS_UI_EXPORT_FORMATS.update(MARC21_UI_EXPORT_FORMATS)
 
 #: Records REST API configuration
 RECORDS_REST_ENDPOINTS = {}
