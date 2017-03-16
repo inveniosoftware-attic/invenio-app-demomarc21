@@ -29,13 +29,9 @@ from __future__ import absolute_import, print_function
 import copy
 from datetime import timedelta
 
-from invenio_marc21.config import MARC21_REST_ENDPOINTS
+from invenio_marc21.config import MARC21_REST_ENDPOINTS, MARC21_UI_ENDPOINTS, \
+    MARC21_UI_EXPORT_FORMATS
 from invenio_records_rest.facets import terms_filter
-from invenio_records_ui.config import RECORDS_UI_ENDPOINTS
-
-# TODO: Remove once Invenio-MARC21 v1.0.0a5 is out.
-MARC21_UI_ENDPOINTS = copy.deepcopy(RECORDS_UI_ENDPOINTS)
-MARC21_UI_ENDPOINTS['recid']['template'] = 'invenio_marc21/detail.html'
 
 
 def _(x):
@@ -80,6 +76,10 @@ COLLECT_STORAGE = 'flask_collect.storage.file'
 #: Records UI configuration
 RECORDS_UI_ENDPOINTS = {}
 RECORDS_UI_ENDPOINTS.update(MARC21_UI_ENDPOINTS)
+
+#: Records UI export format and serializer configuration.
+RECORDS_UI_EXPORT_FORMATS = {}
+RECORDS_UI_EXPORT_FORMATS.update(MARC21_UI_EXPORT_FORMATS)
 
 #: Records REST API configuration
 RECORDS_REST_ENDPOINTS = {}
