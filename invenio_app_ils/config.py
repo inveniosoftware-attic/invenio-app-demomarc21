@@ -31,7 +31,7 @@ from datetime import timedelta
 
 from invenio_marc21.config import MARC21_REST_ENDPOINTS, MARC21_UI_ENDPOINTS, \
     MARC21_UI_EXPORT_FORMATS
-from invenio_records_rest.facets import terms_filter
+from invenio_records_rest.facets import range_filter, terms_filter
 
 
 def _(x):
@@ -128,6 +128,13 @@ RECORDS_REST_FACETS = dict(
                     field='main_entry_personal_name.affiliation'
                 )
             ),
+            years=dict(
+                date_histogram=dict(
+                    field='_created',
+                    interval='year',
+                    format='yyyy'
+                )
+            )
         ),
         post_filters=dict(
             identifier=terms_filter(
@@ -139,6 +146,11 @@ RECORDS_REST_FACETS = dict(
             ),
             affiliation=terms_filter(
                 'main_entry_personal_name.affiliation'
+            ),
+            years=range_filter(
+                '_created',
+                format='yyyy',
+                end_date_math='/y'
             ),
         )
     )
