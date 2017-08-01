@@ -26,7 +26,6 @@
 
 from __future__ import absolute_import, print_function
 
-import copy
 from datetime import timedelta
 
 from invenio_marc21.config import MARC21_REST_ENDPOINTS, MARC21_UI_ENDPOINTS, \
@@ -165,3 +164,5 @@ CELERYBEAT_SCHEDULE = {
         'schedule': timedelta(minutes=60),
     },
 }
+# Celery 4 requires different config names
+CELERY_BEAT_SCHEDULE = CELERYBEAT_SCHEDULE
