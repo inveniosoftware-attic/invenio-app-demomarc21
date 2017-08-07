@@ -22,7 +22,13 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-"""Integrated Library System flavour of Invenio."""
+"""Default configuraiton for Integrated Library System flavour of Invenio.
+
+The following is an overview of the default ILS configuration for Invenio.
+You may customize the default configuration. Please refer to
+http://invenio.readthedocs.io/en/latest/usersguide/tutorial/customize.html
+for a tutorial on how to customize Invenio.
+"""
 
 from __future__ import absolute_import, print_function
 
@@ -51,23 +57,31 @@ I18N_LANGUAGES = [
 
 # Base templates
 # ==============
-# ADMIN_BASE_TEMPLATE = 'invenio_theme/page_admin.html'
+#: Global base template.
 BASE_TEMPLATE = 'invenio_theme/page.html'
+#: Cover page base template (used for e.g. login/sign-up).
 COVER_TEMPLATE = 'invenio_theme/page_cover.html'
+#: Footer base template.
 FOOTER_TEMPLATE = 'invenio_theme/footer.html'
+#: Header base template.
 HEADER_TEMPLATE = 'invenio_theme/header.html'
+#: Settings base template.
 SETTINGS_TEMPLATE = 'invenio_theme/page_settings.html'
 
 # Theme configuration
 # ===================
+#: Site name
 THEME_SITENAME = _('Invenio')
+#: Use default frontpage.
 THEME_FRONTPAGE = True
+#: Frontpage title.
 THEME_FRONTPAGE_TITLE = _('Integrated Library System')
+#: Frontpage template.
 THEME_FRONTPAGE_TEMPLATE = 'invenio_app_ils/frontpage.html'
 
 # Assets
 # ======
-# Static files colleciton method (defaults to copying files).
+#: Static files colleciton method (defaults to copying files).
 COLLECT_STORAGE = 'flask_collect.storage.file'
 
 # Records configuration
@@ -161,11 +175,11 @@ INDEXER_DEFAULT_DOCTYPE = 'bd-v1.0.0'
 
 # OAI-PMH Server
 # ==============
+#: Elasticsearch index to serve OAI-PMH server from.
 OAISERVER_RECORD_INDEX = 'marc21'
 
 # Celery configuration
 # ====================
-#: Beat schedule
 CELERYBEAT_SCHEDULE = {
     'indexer': {
         'task': 'invenio_indexer.tasks.process_bulk_queue',
@@ -178,3 +192,8 @@ CELERYBEAT_SCHEDULE = {
 }
 # Celery 4 requires different config names
 CELERY_BEAT_SCHEDULE = CELERYBEAT_SCHEDULE
+"""Task schedule for Celery.
+
+By default we run bulk indexing every 5 minutes and session table clean up
+every hour.
+"""
