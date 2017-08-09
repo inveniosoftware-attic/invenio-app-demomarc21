@@ -42,7 +42,7 @@ tests_require = [
     'pytest>=2.8.0',
 ]
 
-invenio_db_version = '>=1.0.0b3,<1.1.0'
+invenio_db_version = '>=1.0.0b7,<1.1.0'
 
 extras_require = {
     # Databases
@@ -81,32 +81,32 @@ setup_requires = [
 install_requires = [
     'Flask-BabelEx>=0.9.2',
     # Base bundle
-    'invenio-admin>=1.0.0b1,<1.1.0',
+    'invenio-admin>=1.0.0b2,<1.1.0',
     'invenio-assets>=1.0.0b6,<1.1.0',
     'invenio-base>=1.0.0a14,<1.1.0',
-    'invenio-celery>=1.0.0b2,<1.1.0',
+    'invenio-celery>=1.0.0b3,<1.1.0',
     'invenio-config>=1.0.0b3,<1.1.0',
     'invenio-formatter>=1.0.0b1,<1.1.0',
-    'invenio-i18n>=1.0.0b3,<1.1.0',
+    'invenio-i18n>=1.0.0b4,<1.1.0',
     'invenio-logging>=1.0.0b1,<1.1.0',
     'invenio-mail>=1.0.0b1,<1.1.0',
     'invenio-rest[cors]>=1.0.0a10,<1.1.0',
-    'invenio-theme>=1.0.0b2,<1.1.0',
+    'invenio-theme>=1.0.0b3,<1.1.0',
     # Auth bundle
-    'invenio-access>=1.0.0a11,<1.1.0',
-    'invenio-accounts>=1.0.0b3,<1.1.0',
+    'invenio-access>=1.0.0a12,<1.1.0',
+    'invenio-accounts>=1.0.0b7,<1.1.0',
     'invenio-oauth2server>=1.0.0a15,<1.1.0',
-    'invenio-oauthclient>=1.0.0a12,<1.1.0',
-    'invenio-userprofiles>=1.0.0a9,<1.1.0',
+    'invenio-oauthclient>=1.0.0b1,<1.1.0',
+    'invenio-userprofiles>=1.0.0b1,<1.1.0',
     # Metadata bundle
     'invenio-indexer>=1.0.0a9,<1.1.0',
-    'invenio-jsonschemas>=1.0.0a3,<1.1.0',
+    'invenio-jsonschemas>=1.0.0a5,<1.1.0',
     'invenio-oaiserver>=1.0.0a12,<1.1.0',
     'invenio-pidstore>=1.0.0b1,<1.1.0',
     'invenio-records-rest>=1.0.0a18,<1.1.0',
     'invenio-records-ui>=1.0.0a9,<1.1.0',
     'invenio-records>=1.0.0b1,<1.1.0',
-    'invenio-search-ui>=1.0.0a6,<1.1.0',
+    'invenio-search-ui>=1.0.0a7,<1.1.0',
     'invenio-search>=1.0.0a9,<1.1.0',
     # # Files bundle
     # 'invenio-files-rest>=1.0.0a14,<1.1.0',
