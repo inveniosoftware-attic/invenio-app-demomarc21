@@ -40,6 +40,8 @@ tests_require = [
     'pytest-cov>=1.8.0',
     'pytest-pep8>=1.0.6',
     'pytest>=2.8.0',
+    'pytest-flask>=0.10.0',
+    'selenium>=3.4.3',
 ]
 
 invenio_db_version = '>=1.0.0b7,<1.1.0'
@@ -79,7 +81,6 @@ setup_requires = [
 ]
 
 install_requires = [
-    'Flask-BabelEx>=0.9.2',
     # Base bundle
     'invenio-admin>=1.0.0b2,<1.1.0',
     'invenio-assets>=1.0.0b6,<1.1.0',

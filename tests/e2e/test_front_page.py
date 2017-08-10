@@ -22,40 +22,13 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-"""Pytest configuration."""
+"""E2E integration tests."""
 
-from __future__ import absolute_import, print_function
-
-import shutil
-import tempfile
-
-import pytest
-from flask import Flask
-from flask_babelex import Babel
+from flask import url_for
 
 
-@pytest.yield_fixture()
-def instance_path():
-    """Temporary instance path."""
-    path = tempfile.mkdtemp()
-    yield path
-    shutil.rmtree(path)
-
-
-@pytest.fixture()
-def base_app(instance_path):
-    """Flask application fixture."""
-    app_ = Flask('testapp', instance_path=instance_path)
-    app_.config.update(
-        SECRET_KEY='SECRET_KEY',
-        TESTING=True,
-    )
-    Babel(app_)
-    return app_
-
-
-@pytest.yield_fixture()
-def app(base_app):
-    """Flask application fixture."""
-    with base_app.app_context():
-        yield base_app
+def test_frontpage(live_server, browser):
+    """Test retrieval of front page."""
+    browser.get(url_for('invenio_theme_frontpage.index', _external=True))
+    assert "Integrated Library System" == browser.find_element_by_xpath(
+        "//div[contains(@class, 'frontpage-search')]/*/h1").text

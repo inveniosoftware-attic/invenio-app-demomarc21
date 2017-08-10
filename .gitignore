@@ -46,6 +46,10 @@ nosetests.xml
 coverage.xml
 *,cover
 
+# end-to-end testing
+.e2e_screenshots
+.geckodriver.log
+
 # Translations
 *.mo
 
@@ -60,3 +64,4 @@ target/
 
 # Vim swapfiles
 .*.sw?
+

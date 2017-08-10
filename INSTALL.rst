@@ -20,7 +20,7 @@ Install web assets (JavaScript and CSS dependencies):
 
    (ils)$ invenio npm
    (ils)$ cdvirtualenv var/instance/static/
-   (ils)$ npm install
+   (ils)$ npm update && npm install --silent -g node-sass@3.8.0 clean-css@3.4.19 uglify-js@2.7.3 requirejs@2.2.0
 
 Build web assets and collect static files:
 
