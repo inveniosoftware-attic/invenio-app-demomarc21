@@ -201,3 +201,6 @@ CELERY_BEAT_SCHEDULE = CELERYBEAT_SCHEDULE
 By default we run bulk indexing every 5 minutes and session table clean up
 every hour.
 """
+
+SEARCH_UI_JSTEMPLATE_FACETS = 'templates/invenio_search_ui/facets.html'
+"""Configure the facets template."""
