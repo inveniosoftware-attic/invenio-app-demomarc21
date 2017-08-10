@@ -23,7 +23,21 @@
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
 notifications:
-  email: false
+  email: # sent to the committer and the author
+    on_success: never # default: always
+    on_failure: always # default: always
+
+  webhooks: # Gitter integration
+        urls:
+          - https://webhooks.gitter.im/e/f51458fa35835a48601a
+        # options: [always|never|change]
+        on_success: never    # default: always
+        on_failure: always   # default: always
+        on_start: never      # default: never
+
+        # not passing travis yaml validator, but specified in the doc
+        # on_cancel: never     # default: always
+        # on_error: always     # default: always
 
 sudo: false
 
