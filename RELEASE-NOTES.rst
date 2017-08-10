@@ -1,8 +1,8 @@
 ==========================
- Invenio-App-ILS v1.0.0a2
+ Invenio-App-ILS v1.0.0a3
 ==========================
 
-Invenio-App-ILS v1.0.0a2 was released on March 16, 2017.
+Invenio-App-ILS v1.0.0a3 was released on August 10, 2017.
 
 About
 -----
