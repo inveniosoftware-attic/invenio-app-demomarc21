@@ -22,24 +22,40 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-include .dockerignore
-include .editorconfig
-include .tx/config
-include *.rst
-include *.sh
-include *.txt
-include babel.ini
-include LICENSE
-include pytest.ini
-prune docs/_build
-recursive-include docs *.bat
-recursive-include docs *.py
-recursive-include docs *.rst
-recursive-include docs *.txt
-recursive-include docs Makefile
-recursive-include scripts *.py
-recursive-include scripts *.sh
-recursive-include invenio_app_ils *.html
-recursive-include invenio_app_ils *.po *.pot *.mo
-recursive-include invenio_app_ils *.svg
-recursive-include tests *.py
+"""Pytest configuration."""
+
+from __future__ import absolute_import, print_function
+
+import shutil
+import tempfile
+
+import pytest
+from flask import Flask
+from flask_babelex import Babel
+
+
+@pytest.fixture()
+def instance_path():
+    """Temporary instance path."""
+    path = tempfile.mkdtemp()
+    yield path
+    shutil.rmtree(path)
+
+
+@pytest.fixture()
+def base_app(instance_path):
+    """Flask application fixture."""
+    app_ = Flask('testapp', instance_path=instance_path)
+    app_.config.update(
+        SECRET_KEY='SECRET_KEY',
+        TESTING=True,
+    )
+    Babel(app_)
+    return app_
+
+
+@pytest.fixture()
+def app(base_app):
+    """Flask application fixture."""
+    with base_app.app_context():
+        yield base_app

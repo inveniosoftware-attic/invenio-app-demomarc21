@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env bash
 #
 # This file is part of Invenio.
 # Copyright (C) 2017 CERN.
@@ -22,24 +22,4 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-include .dockerignore
-include .editorconfig
-include .tx/config
-include *.rst
-include *.sh
-include *.txt
-include babel.ini
-include LICENSE
-include pytest.ini
-prune docs/_build
-recursive-include docs *.bat
-recursive-include docs *.py
-recursive-include docs *.rst
-recursive-include docs *.txt
-recursive-include docs Makefile
-recursive-include scripts *.py
-recursive-include scripts *.sh
-recursive-include invenio_app_ils *.html
-recursive-include invenio_app_ils *.po *.pot *.mo
-recursive-include invenio_app_ils *.svg
-recursive-include tests *.py
+npm update && npm install --silent -g node-sass@3.8.0 clean-css@3.4.19 uglify-js@2.7.3 requirejs@2.2.0
