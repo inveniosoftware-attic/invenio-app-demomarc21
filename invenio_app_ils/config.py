@@ -173,6 +173,10 @@ RECORDS_REST_FACETS = dict(
 INDEXER_DEFAULT_INDEX = 'marc21-bibliographic-bd-v1.0.0'
 INDEXER_DEFAULT_DOCTYPE = 'bd-v1.0.0'
 
+# TODO: Remove me once the problem with email is solved in flask-security:
+# https://github.com/mattupstate/flask-security/issues/685
+SECURITY_EMAIL_SENDER = 'no-reply@localhost'
+
 # OAI-PMH Server
 # ==============
 #: Elasticsearch index to serve OAI-PMH server from.
