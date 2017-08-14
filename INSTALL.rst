@@ -1,6 +1,12 @@
 Installation
 ============
 
+Update npm and install a few global packages:
+
+.. code-block:: console
+
+    $ npm update && npm install --silent -g node-sass@3.8.0 clean-css@3.4.19 uglify-js@2.7.3 requirejs@2.2.0
+
 Upgrade pip, setuptools and wheel to make sure you have latest versions:
 
 .. code-block:: console
@@ -20,7 +26,7 @@ Install web assets (JavaScript and CSS dependencies):
 
    (ils)$ invenio npm
    (ils)$ cdvirtualenv var/instance/static/
-   (ils)$ npm update && npm install --silent -g node-sass@3.8.0 clean-css@3.4.19 uglify-js@2.7.3 requirejs@2.2.0
+   (ils)$ npm install
 
 Build web assets and collect static files:
 

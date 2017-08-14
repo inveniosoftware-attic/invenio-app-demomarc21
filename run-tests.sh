@@ -27,4 +27,4 @@ pydocstyle invenio_app_ils tests docs && \
 isort -rc -c -df && \
 check-manifest --ignore ".travis-*" && \
 sphinx-build -qnNW docs docs/_build/html && \
-py.test tests/unit/
+python setup.py test
