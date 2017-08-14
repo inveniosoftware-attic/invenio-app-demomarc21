@@ -84,7 +84,7 @@ install_requires = [
     # Base bundle
     'invenio-admin>=1.0.0b3,<1.1.0',
     'invenio-assets>=1.0.0b6,<1.1.0',
-    'invenio-base>=1.0.0a14,<1.1.0',
+    'invenio-base>=1.0.0a15,<1.1.0',
     'invenio-celery>=1.0.0b3,<1.1.0',
     'invenio-cache>=1.0.0b1,<1.1.0',
     'invenio-config>=1.0.0b3,<1.1.0',
