@@ -90,7 +90,10 @@ background jobs and bulk indexing:
 
 .. code-block:: python
 
+    # If using Celery 3
     BROKER_URL='amqp://invenio:invenio@192.168.33.3:5672/invenio'
+    # If using Celery 4
+    CELERY_BROKER_URL='amqp://invenio:invenio@192.168.33.3:5672/invenio'
 
 
 Cache
