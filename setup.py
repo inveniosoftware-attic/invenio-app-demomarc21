@@ -116,6 +116,7 @@ install_requires = [
     # FIXME put a real version when a release has been done
     # and remove the "dependency_links" line below
     # along with the "--process-dependency-links" option in the Dockerfile
+    # and in the .travis.yml file
     'invenio-archivematica>=0.1.0.dev20170825',
     # MARC21-based ILS
     'invenio-app>=1.0.0b1',
@@ -127,12 +128,12 @@ packages = find_packages()
 
 # Get the version string. Cannot be done with import!
 g = {}
-with open(os.path.join('invenio_app_ils', 'version.py'), 'rt') as fp:
+with open(os.path.join('e_ternity', 'version.py'), 'rt') as fp:
     exec(fp.read(), g)
     version = g['__version__']
 
 setup(
-    name='invenio-app-ils',
+    name='e-ternity',
     version=version,
     description=__doc__,
     long_description=readme + '\n\n' + history,
@@ -140,24 +141,24 @@ setup(
     license='GPLv2',
     author='CERN',
     author_email='info@inveniosoftware.org',
-    url='https://github.com/inveniosoftware/invenio-app-ils',
+    url='https://github.com/remileduc/e-ternity',
     packages=packages,
     zip_safe=False,
     include_package_data=True,
     platforms='any',
     entry_points={
         'flask.commands': [
-            'demo = invenio_app_ils.cli:demo',
-            'marc21 = invenio_app_ils.cli:marc21_cli',
+            'demo = e_ternity.cli:demo',
+            'marc21 = e_ternity.cli:marc21_cli',
         ],
         'invenio_base.blueprints': [
-            'invenio_app_ils = invenio_app_ils.views:blueprint',
+            'e_ternity = e_ternity.views:blueprint',
         ],
         'invenio_config.module': [
-            'invenio_app_ils = invenio_app_ils.config',
+            'e_ternity = e_ternity.config',
         ],
         'invenio_i18n.translations': [
-            'messages = invenio_app_ils',
+            'messages = e_ternity',
         ],
     },
     dependency_links=['https://github.com/inveniosoftware/invenio-archivematica/tarball/master#egg=invenio-archivematica-0.1.0.dev20170825'],

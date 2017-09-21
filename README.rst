@@ -25,24 +25,24 @@
  Invenio ILS
 ============
 
-.. image:: https://img.shields.io/travis/inveniosoftware/invenio-app-ils.svg
-        :target: https://travis-ci.org/inveniosoftware/invenio-app-ils
+.. image:: https://img.shields.io/travis/remileduc/e-ternity.svg
+        :target: https://travis-ci.org/remileduc/e-ternity
 
-.. image:: https://img.shields.io/coveralls/inveniosoftware/invenio-app-ils.svg
-        :target: https://coveralls.io/r/inveniosoftware/invenio-app-ils
+.. image:: https://img.shields.io/coveralls/remileduc/e-ternity.svg
+        :target: https://coveralls.io/r/remileduc/e-ternity
 
-.. image:: https://img.shields.io/github/tag/inveniosoftware/invenio-app-ils.svg
-        :target: https://github.com/inveniosoftware/invenio-app-ils/releases
+.. image:: https://img.shields.io/github/tag/remileduc/e-ternity.svg
+        :target: https://github.com/remileduc/e-ternity/releases
 
-.. image:: https://img.shields.io/pypi/dm/invenio-app-ils.svg
-        :target: https://pypi.python.org/pypi/invenio-app-ils
+.. image:: https://img.shields.io/pypi/dm/e-ternity.svg
+        :target: https://pypi.python.org/pypi/e-ternity
 
-.. image:: https://img.shields.io/github/license/inveniosoftware/invenio-app-ils.svg
-        :target: https://github.com/inveniosoftware/invenio-app-ils/blob/master/LICENSE
+.. image:: https://img.shields.io/github/license/remileduc/e-ternity.svg
+        :target: https://github.com/remileduc/e-ternity/blob/master/LICENSE
 
 Integrated Library System flavour of Invenio.
 
 *This is an experimental developer preview release.*
 
 Further documentation is available on
-https://invenio-app-ils.readthedocs.io/
+https://e-ternity.readthedocs.io/

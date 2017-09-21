@@ -35,7 +35,7 @@ charset = utf-8
 [*.py]
 indent_size = 4
 # isort plugin configuration
-known_first_party = invenio_app_ils
+known_first_party = e_ternity
 multi_line_output = 2
 default_section = THIRDPARTY
 skip = .eggs

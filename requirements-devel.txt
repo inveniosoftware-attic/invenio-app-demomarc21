@@ -50,7 +50,10 @@
 -e git+git://github.com/inveniosoftware/invenio-records.git#egg=invenio-records
 -e git+git://github.com/inveniosoftware/invenio-search-ui.git#egg=invenio-search-ui
 -e git+git://github.com/inveniosoftware/invenio-search.git#egg=invenio-search
+# Files bundle
+-e git+git://github.com/inveniosoftware/invenio-records-files.git#egg=invenio-records-files
+# Archive bundle
+-e git+git://github.com/inveniosoftware/invenio-archivematica.git#egg=invenio-archivematica
 # MARC21-based ILS
 -e git+git://github.com/inveniosoftware/invenio-app.git#egg=invenio-app
 -e git+git://github.com/inveniosoftware/invenio-marc21.git#egg=invenio-marc21
-

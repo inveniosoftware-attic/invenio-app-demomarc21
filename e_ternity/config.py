@@ -77,7 +77,7 @@ THEME_FRONTPAGE = True
 #: Frontpage title.
 THEME_FRONTPAGE_TITLE = _('Integrated Library System')
 #: Frontpage template.
-THEME_FRONTPAGE_TEMPLATE = 'invenio_app_ils/frontpage.html'
+THEME_FRONTPAGE_TEMPLATE = 'e_ternity/frontpage.html'
 
 # Assets
 # ======

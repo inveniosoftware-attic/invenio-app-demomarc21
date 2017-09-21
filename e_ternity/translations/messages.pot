@@ -1,33 +1,32 @@
-# English translations for invenio-app-ils.
+# Translations template for e-ternity.
 # Copyright (C) 2017 CERN
-# This file is distributed under the same license as the invenio-app-ils
+# This file is distributed under the same license as the e-ternity
 # project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: invenio-app-ils 1.0.0a1\n"
+"Project-Id-Version: e-ternity 1.0.0a1\n"
 "Report-Msgid-Bugs-To: info@inveniosoftware.org\n"
 "POT-Creation-Date: 2017-03-12 18:42+0100\n"
-"PO-Revision-Date: 2017-03-12 18:42+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: en\n"
-"Language-Team: en <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
 
-#: invenio_app_ils/config.py:53
+#: e_ternity/config.py:53
 msgid "French"
 msgstr ""
 
-#: invenio_app_ils/config.py:67
+#: e_ternity/config.py:67
 msgid "Invenio"
 msgstr ""
 
-#: invenio_app_ils/config.py:69
+#: e_ternity/config.py:69
 msgid "Integrated Library System"
 msgstr ""
 

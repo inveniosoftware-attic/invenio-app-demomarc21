@@ -65,7 +65,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Invenio-App-ILS'
+project = u'E-Ternity'
 copyright = u'2017, CERN'
 author = u'CERN'
 
@@ -78,7 +78,7 @@ author = u'CERN'
 # Get the version string. Cannot be done with import!
 g = {}
 with open(os.path.join(os.path.dirname(__file__), '..',
-                       'invenio_app_ils', 'version.py'),
+                       'e_ternity', 'version.py'),
           'rt') as fp:
     exec(fp.read(), g)
     version = g['__version__']
@@ -136,14 +136,14 @@ html_theme = 'alabaster'
 
 html_theme_options = {
     'description': 'Integrated Library System flavour of Invenio.',
-    'github_user': 'inveniosoftware',
-    'github_repo': 'invenio-app-ils',
+    'github_user': 'remileduc',
+    'github_repo': 'e-ternity',
     'github_button': False,
     'github_banner': True,
     'show_powered_by': False,
     'extra_nav_links': {
-        'invenio-app-ils@GitHub': 'https://github.com/inveniosoftware/invenio-app-ils',
-        'invenio-app-ils@PyPI': 'https://pypi.python.org/pypi/invenio-app-ils/',
+        'e-ternity@GitHub': 'https://github.com/remileduc/e-ternity',
+        'e-ternity@PyPI': 'https://pypi.python.org/pypi/e-ternity/',
     }
 }
 
@@ -248,7 +248,7 @@ html_sidebars = {
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'invenio-app-ils_namedoc'
+htmlhelp_basename = 'e-ternity_namedoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -270,7 +270,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'invenio-app-ils.tex', u'invenio-app-ils Documentation',
+  (master_doc, 'e-ternity.tex', u'e-ternity Documentation',
    u'CERN', 'manual'),
 ]
 
@@ -300,7 +300,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'invenio-app-ils', u'invenio-app-ils Documentation',
+    (master_doc, 'e-ternity', u'e-ternity Documentation',
      [author], 1)
 ]
 
@@ -314,8 +314,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'invenio-app-ils', u'Invenio-App-ILS Documentation',
-   author, 'invenio-app-ils', 'Integrated Library System flavour of Invenio.',
+  (master_doc, 'e-ternity', u'E-Ternity Documentation',
+   author, 'e-ternity', 'Integrated Library System flavour of Invenio.',
    'Miscellaneous'),
 ]
 

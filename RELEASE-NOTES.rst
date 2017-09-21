@@ -1,8 +1,8 @@
-==========================
- Invenio-App-ILS v1.0.0a3
-==========================
+==================
+E-Ternity v1.0.0a3
+==================
 
-Invenio-App-ILS v1.0.0a3 was released on August 10, 2017.
+E-Ternity v1.0.0a3 was released on August 10, 2017.
 
 About
 -----
@@ -19,18 +19,18 @@ What's new
 Installation
 ------------
 
-   $ pip install invenio-app-ils==1.0.0a1
+   $ pip install --process-dependency-links e-ternity
 
 Documentation
 -------------
 
-   https://invenio-app-ils.readthedocs.io/
+   https://e-ternity.readthedocs.io/
 
-Happy hacking and thanks for flying Invenio-App-ILS.
+Happy hacking and thanks for flying E-Ternity.
 
 | Invenio Development Team
 |   Email: info@inveniosoftware.org
 |   IRC: #invenio on irc.freenode.net
 |   Twitter: https://twitter.com/inveniosoftware
-|   GitHub: https://github.com/inveniosoftware/invenio-app-ils
+|   GitHub: https://github.com/remileduc/e-ternity
 |   URL: http://inveniosoftware.org
