@@ -34,6 +34,8 @@ from __future__ import absolute_import, print_function
 
 from datetime import timedelta
 
+from invenio_app.config import \
+  APP_DEFAULT_SECURE_HEADERS as INVENIO_APP_APP_DEFAULT_SECURE_HEADERS
 from invenio_marc21.config import MARC21_REST_ENDPOINTS, MARC21_UI_ENDPOINTS, \
     MARC21_UI_EXPORT_FORMATS
 from invenio_records_rest.facets import range_filter, terms_filter
@@ -204,3 +206,27 @@ every hour.
 
 SEARCH_UI_JSTEMPLATE_FACETS = 'templates/invenio_search_ui/facets.html'
 """Configure the facets template."""
+
+# Default Secure Headers
+# ======================
+APP_DEFAULT_SECURE_HEADERS = INVENIO_APP_APP_DEFAULT_SECURE_HEADERS
+APP_DEFAULT_SECURE_HEADERS['force_https'] = False
+APP_DEFAULT_SECURE_HEADERS['session_cookie_secure'] = False
+
+# Sipstore
+# ========
+SIPSTORE_AGENT_JSONSCHEMA_ENABLED = False
+SIPSTORE_ARCHIVER_LOCATION_NAME = 'archive'
+SIPSTORE_ARCHIVER_METADATA_TYPES = ['invenio-json-test']
+
+# Archivematica
+# =============
+ARCHIVEMATICA_TRANSFER_FACTORY = 'invenio_archivematica.factories.transfer_cp'
+ARCHIVEMATICA_TRANSFER_FOLDER = {}
+# Need to be overridden with environment variables
+ARCHIVEMATICA_STORAGE_URL = ''
+ARCHIVEMATICA_STORAGE_USER = ''
+ARCHIVEMATICA_STORAGE_API_KEY = ''
+ARCHIVEMATICA_DASHBOARD_URL = ''
+ARCHIVEMATICA_DASHBOARD_USER = ''
+ARCHIVEMATICA_DASHBOARD_API_KEY = ''
