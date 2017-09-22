@@ -87,9 +87,9 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/Invenio-App-ILS.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/E-Ternity.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/Invenio-App-ILS.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/E-Ternity.qhc"
 
 applehelp:
 	$(SPHINXBUILD) -b applehelp $(ALLSPHINXOPTS) $(BUILDDIR)/applehelp
@@ -104,8 +104,8 @@ devhelp:
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/Invenio-App-ILS"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/Invenio-App-ILS"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/E-Ternity"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/E-Ternity"
 	@echo "# devhelp"
 
 epub:

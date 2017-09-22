@@ -25,8 +25,8 @@
 [main]
 host = https://www.transifex.com
 
-[invenio.invenio-app-ils-messages]
-file_filter = invenio_app_ils/translations/<lang>/LC_MESSAGES/messages.po
-source_file = invenio_app_ils/translations/messages.pot
+[invenio.e-ternity-messages]
+file_filter = e_ternity/translations/<lang>/LC_MESSAGES/messages.po
+source_file = e_ternity/translations/messages.pot
 source_lang = en
 type = PO

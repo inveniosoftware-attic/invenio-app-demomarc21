@@ -22,12 +22,12 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-"""Version information for Invenio-App-ILS.
-
-This file is imported by ``invenio_app_ils.__init__``,
-and parsed by ``setup.py``.
-"""
+"""Module tests."""
 
 from __future__ import absolute_import, print_function
 
-__version__ = '1.0.0a3'
+
+def test_version():
+    """Test version import."""
+    from e_ternity import __version__
+    assert __version__

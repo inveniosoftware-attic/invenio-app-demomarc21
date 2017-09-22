@@ -83,8 +83,10 @@ before_install:
   - "./scripts/setup-npm.sh"
 
 install:
+  # FIXME remove when there is a true version of invenio-archivematica
+  - "travis_retry pip install git+https://github.com/inveniosoftware/invenio-archivematica.git#egg=invenio-archivematica"
   - "travis_retry pip install -r .travis-${REQUIREMENTS}-requirements.txt"
-  - "travis_retry pip install -e .[all]"
+  - "travis_retry pip install --process-dependency-links -e .[all]"
   - "./scripts/setup-assets.sh"
 
 before_script:
@@ -108,5 +110,5 @@ deploy:
   on:
     tags: true
     python: "2.7"
-    repo: inveniosoftware/invenio-app-ils
+    repo: remileduc/e-ternity
     condition: $DEPLOY = true

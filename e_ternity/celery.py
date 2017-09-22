@@ -22,15 +22,12 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-"""Blueprint used for loading templates."""
+"""e-ternity base Invenio configuration."""
 
 from __future__ import absolute_import, print_function
 
-from flask import Blueprint
+from flask_celeryext import create_celery_app
 
-blueprint = Blueprint(
-    'invenio_app_ils',
-    __name__,
-    template_folder='templates',
-    static_folder='static',
-)
+from .factory import create_app
+
+celery = create_celery_app(create_app())

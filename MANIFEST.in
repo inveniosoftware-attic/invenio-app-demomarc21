@@ -39,7 +39,7 @@ recursive-include docs *.txt
 recursive-include docs Makefile
 recursive-include scripts *.py
 recursive-include scripts *.sh
-recursive-include invenio_app_ils *.html
-recursive-include invenio_app_ils *.po *.pot *.mo
-recursive-include invenio_app_ils *.svg
+recursive-include e_ternity *.html
+recursive-include e_ternity *.po *.pot *.mo
+recursive-include e_ternity *.svg
 recursive-include tests *.py

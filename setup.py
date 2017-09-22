@@ -82,41 +82,45 @@ setup_requires = [
 
 install_requires = [
     # Base bundle
-    'invenio-admin>=1.0.0b3,<1.1.0',
-    'invenio-assets>=1.0.0b6,<1.1.0',
-    'invenio-base>=1.0.0a15,<1.1.0',
-    'invenio-celery>=1.0.0b3,<1.1.0',
-    'invenio-cache>=1.0.0b1,<1.1.0',
-    'invenio-config>=1.0.0b3,<1.1.0',
-    'invenio-formatter>=1.0.0b3,<1.1.0',
-    'invenio-i18n>=1.0.0b4,<1.1.0',
-    'invenio-logging>=1.0.0b2,<1.1.0',
-    'invenio-mail>=1.0.0b1,<1.1.0',
-    'invenio-rest[cors]>=1.0.0b1,<1.1.0',
-    'invenio-theme>=1.0.0b4,<1.1.0',
+    'invenio-admin>=1.0.0b4',
+    'invenio-assets>=1.0.0b6',
+    'invenio-base>=1.0.0a16',
+    'invenio-celery>=1.0.0b3',
+    'invenio-cache>=1.0.0b1',
+    'invenio-config>=1.0.0b3',
+    'invenio-formatter>=1.0.0b3',
+    'invenio-i18n>=1.0.0b4',
+    'invenio-logging>=1.0.0b3',
+    'invenio-mail>=1.0.0b1',
+    'invenio-rest[cors]>=1.0.0b1',
+    'invenio-theme>=1.0.0b4',
     # Auth bundle
-    'invenio-access>=1.0.0b1,<1.1.0',
-    'invenio-accounts>=1.0.0b8,<1.1.0',
-    'invenio-oauth2server>=1.0.0b1,<1.1.0',
-    'invenio-oauthclient>=1.0.0b2,<1.1.0',
-    'invenio-userprofiles>=1.0.0b1,<1.1.0',
+    'invenio-access>=1.0.0b1',
+    'invenio-accounts>=1.0.0b10',
+    'invenio-oauth2server>=1.0.0b1',
+    'invenio-oauthclient>=1.0.0b2',
+    'invenio-userprofiles>=1.0.0b1',
     # Metadata bundle
-    'invenio-indexer>=1.0.0a10,<1.1.0',
-    'invenio-jsonschemas>=1.0.0a5,<1.1.0',
-    'invenio-oaiserver>=1.0.0a13,<1.1.0',
-    'invenio-pidstore>=1.0.0b2,<1.1.0',
-    'invenio-records-rest>=1.0.0b1,<1.1.0',
-    'invenio-records-ui>=1.0.0a9,<1.1.0',
-    'invenio-records>=1.0.0b1,<1.1.0',
-    'invenio-search-ui>=1.0.0a7,<1.1.0',
-    'invenio-search>=1.0.0a10,<1.1.0',
+    'invenio-indexer>=1.0.0a10',
+    'invenio-jsonschemas>=1.0.0a5',
+    'invenio-oaiserver>=1.0.0a13',
+    'invenio-pidstore>=1.0.0b2',
+    'invenio-records-rest>=1.0.0b1',
+    'invenio-records-ui>=1.0.0b1',
+    'invenio-records>=1.0.0b2',
+    'invenio-search-ui>=1.0.0a7',
+    'invenio-search>=1.0.0a10',
     # # Files bundle
-    # 'invenio-files-rest>=1.0.0a18,<1.1.0',
-    # 'invenio-previewer>=1.0.0a10,<1.1.0',
-    # 'invenio-records-files>=1.0.0a9,<1.1.0',
+    'invenio-records-files>=1.0.0a9',
+    # Archive bundle
+    # FIXME put a real version when a release has been done
+    # and remove the "dependency_links" line below
+    # along with the "--process-dependency-links" option in the Dockerfile
+    # and in the .travis.yml file
+    'invenio-archivematica>=0.1.0.dev20170825',
     # MARC21-based ILS
-    'invenio-app>=1.0.0b1,<1.1.0',
-    'invenio-marc21>=1.0.0a5,<1.1.0',
+    'invenio-app>=1.0.0b1',
+    'invenio-marc21>=1.0.0a5',
 ]
 
 packages = find_packages()
@@ -124,12 +128,12 @@ packages = find_packages()
 
 # Get the version string. Cannot be done with import!
 g = {}
-with open(os.path.join('invenio_app_ils', 'version.py'), 'rt') as fp:
+with open(os.path.join('e_ternity', 'version.py'), 'rt') as fp:
     exec(fp.read(), g)
     version = g['__version__']
 
 setup(
-    name='invenio-app-ils',
+    name='e-ternity',
     version=version,
     description=__doc__,
     long_description=readme + '\n\n' + history,
@@ -137,26 +141,27 @@ setup(
     license='GPLv2',
     author='CERN',
     author_email='info@inveniosoftware.org',
-    url='https://github.com/inveniosoftware/invenio-app-ils',
+    url='https://github.com/remileduc/e-ternity',
     packages=packages,
     zip_safe=False,
     include_package_data=True,
     platforms='any',
     entry_points={
         'flask.commands': [
-            'demo = invenio_app_ils.cli:demo',
-            'marc21 = invenio_app_ils.cli:marc21_cli',
+            'demo = e_ternity.cli:demo',
+            'marc21 = e_ternity.cli:marc21_cli',
         ],
         'invenio_base.blueprints': [
-            'invenio_app_ils = invenio_app_ils.views:blueprint',
+            'e_ternity = e_ternity.views:blueprint',
         ],
         'invenio_config.module': [
-            'invenio_app_ils = invenio_app_ils.config',
+            'e_ternity = e_ternity.config',
         ],
         'invenio_i18n.translations': [
-            'messages = invenio_app_ils',
+            'messages = e_ternity',
         ],
     },
+    dependency_links=['https://github.com/inveniosoftware/invenio-archivematica/tarball/master#egg=invenio-archivematica-0.1.0.dev20170825'],
     extras_require=extras_require,
     install_requires=install_requires,
     setup_requires=setup_requires,

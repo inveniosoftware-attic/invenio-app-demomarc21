@@ -22,12 +22,15 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-"""Module tests."""
+"""Blueprint used for loading templates."""
 
 from __future__ import absolute_import, print_function
 
+from flask import Blueprint
 
-def test_version():
-    """Test version import."""
-    from invenio_app_ils import __version__
-    assert __version__
+blueprint = Blueprint(
+    'e_ternity',
+    __name__,
+    template_folder='templates',
+    static_folder='static',
+)

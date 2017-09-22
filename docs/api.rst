@@ -28,12 +28,12 @@ API Docs
 CLI
 ---
 
-.. automodule:: invenio_app_ils.cli
+.. automodule:: e_ternity.cli
    :members:
 
 
 Views
 -----
 
-.. automodule:: invenio_app_ils.views
+.. automodule:: e_ternity.views
    :members:
