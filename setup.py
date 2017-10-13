@@ -103,11 +103,11 @@ install_requires = [
     # Metadata bundle
     'invenio-indexer>=1.0.0a10,<1.1.0',
     'invenio-jsonschemas>=1.0.0a5,<1.1.0',
-    'invenio-oaiserver>=1.0.0a13,<1.1.0',
+    'invenio-oaiserver>=1.0.0a14,<1.1.0',
     'invenio-pidstore>=1.0.0b2,<1.1.0',
     'invenio-records-rest>=1.0.0b1,<1.1.0',
     'invenio-records-ui>=1.0.0a9,<1.1.0',
-    'invenio-records>=1.0.0b1,<1.1.0',
+    'invenio-records>=1.0.0b3,<1.1.0',
     'invenio-search-ui>=1.0.0a7,<1.1.0',
     'invenio-search>=1.0.0a10,<1.1.0',
     # # Files bundle

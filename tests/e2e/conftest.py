@@ -35,7 +35,7 @@ from selenium import webdriver
 from sqlalchemy_utils.functions import create_database, database_exists
 
 
-@pytest.fixture(scope='session', autouse=True)
+@pytest.fixture(scope='module', autouse=True)
 def base_app(tmpdir_factory):
     """Flask application fixture for E2E/integration/selenium tests."""
     tmpdir = tmpdir_factory.mktemp('data')
@@ -60,7 +60,7 @@ def base_app(tmpdir_factory):
         yield app
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='module')
 def es():
     """Provide elasticsearch access."""
     try:
@@ -75,7 +75,7 @@ def es():
     list(current_search.delete(ignore=[404]))
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='module')
 def db():
     """Setup database."""
     if not database_exists(str(db_.engine.url)):
