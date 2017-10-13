@@ -31,7 +31,7 @@ import uuid
 import click
 import pkg_resources
 from dojson.contrib.marc21 import marc21, marc21_authority
-from dojson.contrib.marc21.utils import create_record, load, split_stream
+from dojson.contrib.marc21.utils import load
 from flask.cli import with_appcontext
 from invenio_db import db
 from invenio_indexer.api import RecordIndexer
