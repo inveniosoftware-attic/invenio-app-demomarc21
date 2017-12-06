@@ -44,7 +44,8 @@ tests_require = [
     'selenium>=3.4.3',
 ]
 
-invenio_db_version = '>=1.0.0b8,<1.1.0'
+invenio_db_version = '>=1.0.0b9,<1.1.0'
+invenio_search_version = '>=1.0.0b4,<1.1.0'
 
 extras_require = {
     # Databases
@@ -56,12 +57,10 @@ extras_require = {
     ],
     # Elasticsearch versionS
     'elasticsearch2': [
-        'elasticsearch>=2.0.0,<3.0.0',
-        'elasticsearch-dsl>=2.0.0,<3.0.0',
+        'invenio-search[elasticsearch2]' + invenio_search_version,
     ],
     'elasticsearch5': [
-        'elasticsearch>=5.0.0,<6.0.0',
-        'elasticsearch-dsl>=5.0.0,<6.0.0',
+        'invenio-search[elasticsearch5]' + invenio_search_version,
     ],
     'docs': [
         'Sphinx>=1.5.1',
@@ -82,41 +81,40 @@ setup_requires = [
 
 install_requires = [
     # Base bundle
-    'invenio-admin>=1.0.0b3,<1.1.0',
-    'invenio-assets>=1.0.0b6,<1.1.0',
-    'invenio-base>=1.0.0a15,<1.1.0',
-    'invenio-celery>=1.0.0b3,<1.1.0',
+    'invenio-admin>=1.0.0b4,<1.1.0',
+    'invenio-assets>=1.0.0b7,<1.1.0',
+    'invenio-base>=1.0.0b1,<1.1.0',
     'invenio-cache>=1.0.0b1,<1.1.0',
+    'invenio-celery>=1.0.0b3,<1.1.0',
     'invenio-config>=1.0.0b3,<1.1.0',
     'invenio-formatter>=1.0.0b3,<1.1.0',
     'invenio-i18n>=1.0.0b4,<1.1.0',
-    'invenio-logging>=1.0.0b2,<1.1.0',
+    'invenio-logging>=1.0.0b3,<1.1.0',
     'invenio-mail>=1.0.0b1,<1.1.0',
-    'invenio-rest[cors]>=1.0.0b1,<1.1.0',
+    'invenio-rest[cors]>=1.0.0b2,<1.1.0',
     'invenio-theme>=1.0.0b4,<1.1.0',
     # Auth bundle
     'invenio-access>=1.0.0b1,<1.1.0',
-    'invenio-accounts>=1.0.0b8,<1.1.0',
-    'invenio-oauth2server>=1.0.0b1,<1.1.0',
-    'invenio-oauthclient>=1.0.0b2,<1.1.0',
-    'invenio-userprofiles>=1.0.0b1,<1.1.0',
+    'invenio-accounts>=1.0.0b10,<1.1.0',
+    'invenio-oauth2server>=1.0.0b3,<1.1.0',
+    'invenio-oauthclient>=1.0.0b3,<1.1.0',
+    'invenio-userprofiles>=1.0.0b2,<1.1.0',
     # Metadata bundle
-    'invenio-indexer>=1.0.0a10,<1.1.0',
-    'invenio-jsonschemas>=1.0.0a5,<1.1.0',
-    'invenio-oaiserver>=1.0.0a14,<1.1.0',
+    'invenio-indexer>=1.0.0b1,<1.1.0',
+    'invenio-jsonschemas>=1.0.0a7,<1.1.0',
+    'invenio-oaiserver>=1.0.0b1,<1.1.0',
     'invenio-pidstore>=1.0.0b2,<1.1.0',
-    'invenio-records-rest>=1.0.0b1,<1.1.0',
-    'invenio-records-ui>=1.0.0a9,<1.1.0',
-    'invenio-records>=1.0.0b3,<1.1.0',
-    'invenio-search-ui>=1.0.0a7,<1.1.0',
-    'invenio-search>=1.0.0a10,<1.1.0',
+    'invenio-records-rest>=1.0.0b5,<1.1.0',
+    'invenio-records-ui>=1.0.0b1,<1.1.0',
+    'invenio-records>=1.0.0b4,<1.1.0',
+    'invenio-search-ui>=1.0.0a9,<1.1.0',
     # # Files bundle
     # 'invenio-files-rest>=1.0.0a18,<1.1.0',
     # 'invenio-previewer>=1.0.0a10,<1.1.0',
     # 'invenio-records-files>=1.0.0a9,<1.1.0',
     # MARC21-based ILS
     'invenio-app>=1.0.0b1,<1.1.0',
-    'invenio-marc21>=1.0.0a5,<1.1.0',
+    'invenio-marc21>=1.0.0a6,<1.1.0',
 ]
 
 packages = find_packages()
