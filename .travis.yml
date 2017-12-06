@@ -27,6 +27,9 @@ addons:
 
 dist: trusty # Chrome driver fails if not trusty dist
 
+addons:
+  postgresql: 9.4
+
 notifications:
   email: # sent to the committer and the author
     on_success: never # default: always
@@ -56,35 +59,50 @@ cache:
 
 services:
   - redis
+  - postgresql
 
 env:
-  - REQUIREMENTS=lowest E2E="no" ES_VERSION=2.4.6
-  - REQUIREMENTS=release DEPLOY=true E2E="yes" ES_VERSION=2.4.6
-  - REQUIREMENTS=devel E2E="yes" ES_VERSION=2.4.6
+  global:
+    - ES2_DOWNLOAD_URL="https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.2/elasticsearch-2.4.2.tar.gz"
+    - ES5_DOWNLOAD_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.4.tar.gz"
+    - ES_HOST=127.0.0.1
+    - SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://postgres@localhost:5432/invenio"
+  matrix:
+    - REQUIREMENTS=lowest E2E="no" EXTRAS=all,elasticsearch2,postgresql ES_URL=$ES2_DOWNLOAD_URL
+    - REQUIREMENTS=lowest E2E="no" EXTRAS=all,elasticsearch5,postgresql ES_URL=$ES5_DOWNLOAD_URL
+    - REQUIREMENTS=release E2E="yes" EXTRAS=all,elasticsearch2,postgresql ES_URL=$ES2_DOWNLOAD_URL
+    - REQUIREMENTS=release E2E="yes" EXTRAS=all,elasticsearch5,postgresql ES_URL=$ES5_DOWNLOAD_URL DEPLOY=true
+    - REQUIREMENTS=devel E2E="yes" EXTRAS=all,elasticsearch5,postgresql ES_URL=$ES5_DOWNLOAD_URL
+
+jdk:
+  - "oraclejdk8"
 
 python:
   - "2.7"
   - "3.5"
 
 before_install:
-  - mkdir /tmp/elasticsearch
-  - wget -O - https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz | tar xz --directory=/tmp/elasticsearch --strip-components=1
-  - "/tmp/elasticsearch/bin/plugin install -b mapper-attachments"
+  # Elasticsearch
+  - "mkdir /tmp/elasticsearch"
+  - "wget -O - $ES_URL | tar xz --directory=/tmp/elasticsearch --strip-components=1"
   - "/tmp/elasticsearch/bin/elasticsearch &"
+  - "sleep 20"
   # Gecko webdriver: https://github.com/mozilla/geckodriver/releases/
   - "PATH=$PATH:$HOME/webdrivers"
   - "if [ ${E2E} == 'yes' ] && [ ! -f $HOME/webdrivers/chromedriver ]; then wget https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip -P $HOME/webdrivers; unzip -d $HOME/webdrivers $HOME/webdrivers/chromedriver_linux64.zip; fi"
   - "nvm install 6; nvm use 6"
   - "travis_retry pip install --upgrade pip setuptools py"
   - "travis_retry pip install twine wheel coveralls requirements-builder"
-  - "requirements-builder -e all --level=min setup.py > .travis-lowest-requirements.txt"
-  - "requirements-builder -e all --level=pypi setup.py > .travis-release-requirements.txt"
-  - "requirements-builder -e all --level=dev --req requirements-devel.txt setup.py > .travis-devel-requirements.txt"
+  - "requirements-builder -e $EXTRAS --level=min setup.py > .travis-lowest-requirements.txt"
+  - "requirements-builder -e $EXTRAS --level=pypi setup.py > .travis-release-requirements.txt"
+  - "requirements-builder -e $EXTRAS --level=dev --req requirements-devel.txt setup.py > .travis-devel-requirements.txt"
+  - "psql -c 'CREATE DATABASE invenio;' -U postgres"
   - "./scripts/setup-npm.sh"
+
 
 install:
   - "travis_retry pip install -r .travis-${REQUIREMENTS}-requirements.txt"
-  - "travis_retry pip install -e .[all]"
+  - "travis_retry pip install -e .[$EXTRAS]"
   - "./scripts/setup-assets.sh"
 
 before_script:
