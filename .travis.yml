@@ -84,7 +84,7 @@ before_install:
 
 install:
   - "travis_retry pip install -r .travis-${REQUIREMENTS}-requirements.txt"
-  - "travis_retry pip install -e .[all]"
+  - "travis_retry pip install .[all,elasticsearch2]"
   - "./scripts/setup-assets.sh"
 
 before_script:
