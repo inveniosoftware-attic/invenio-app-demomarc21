@@ -18,7 +18,7 @@ Install Invenio ILS:
 
 .. code-block:: console
 
-   (ils)$ pip install invenio-app-ils[postgresql,elasticsearch2] --pre
+   (ils)$ pip install invenio-app-ils[postgresql,elasticsearch2]
 
 Install web assets (JavaScript and CSS dependencies):
 
