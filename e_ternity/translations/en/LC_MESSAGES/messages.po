@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
 
-#: invenio_app_ils/config.py:53
+#: e_ternity/config.py:53
 msgid "French"
 msgstr ""
 
-#: invenio_app_ils/config.py:67
+#: e_ternity/config.py:67
 msgid "Invenio"
 msgstr ""
 
-#: invenio_app_ils/config.py:69
-msgid "Integrated Library System"
+#: e_ternity/config.py:69
+msgid "E-Ternity"
 msgstr ""
 

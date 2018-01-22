@@ -25,5 +25,5 @@
 Configuration
 =============
 
-.. automodule:: invenio_app_ils.config
+.. automodule:: e_ternity.config
    :members:

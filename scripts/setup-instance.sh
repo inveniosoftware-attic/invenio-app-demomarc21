@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env bash
 #
 # This file is part of Invenio.
-# Copyright (C) 2017 CERN.
+# Copyright (C) 2018 CERN.
 #
 # Invenio is free software; you can redistribute it
 # and/or modify it under the terms of the GNU General Public License as
@@ -22,12 +22,23 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-"""Version information for Invenio-App-ILS.
+curl -XDELETE localhost:9200/*
+invenio db destroy --yes-i-know
+invenio db init create
+invenio index queue init
+invenio index init
+invenio demo init
 
-This file is imported by ``invenio_app_ils.__init__``,
-and parsed by ``setup.py``.
-"""
+invenio files location --default records /records/
+invenio files location archive /archive/
 
-from __future__ import absolute_import, print_function
-
-__version__ = '1.0.0a3'
+# Create a test user
+invenio users create test@test.ch -a --password=123456
+# Create an admin user
+invenio users create admin@test.ch -a --password=123456
+invenio roles create admin
+invenio roles add admin@test.ch admin
+invenio access allow superuser-access role admin
+# Allow access to archive
+invenio access allow archive-read user test@test.com
+invenio access allow archive-write user test@test.com

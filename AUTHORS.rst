@@ -24,6 +24,8 @@
 Authors
 =======
 
-Integrated Library System flavour of Invenio.
+E-Ternity flavour of Invenio.
 
-- Lars Holm Nielsen <lars.holm.nielsen@cern.ch>
+- Jean-Yves Le Meur <Jean-Yves.Le.Meur@cern.ch>
+- Nicola Tarocco <nicola.tarocco@cern.ch>
+- Remi Ducceschi <remi.ducceschi@cern.ch>

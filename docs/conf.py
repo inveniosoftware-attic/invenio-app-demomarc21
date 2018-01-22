@@ -78,7 +78,7 @@ author = u'CERN'
 # Get the version string. Cannot be done with import!
 g = {}
 with open(os.path.join(os.path.dirname(__file__), '..',
-                       'invenio_app_ils', 'version.py'),
+                       'e_ternity', 'version.py'),
           'rt') as fp:
     exec(fp.read(), g)
     version = g['__version__']
@@ -135,7 +135,7 @@ todo_include_todos = False
 html_theme = 'alabaster'
 
 html_theme_options = {
-    'description': 'Integrated Library System flavour of Invenio.',
+    'description': 'E-Ternity flavour of Invenio.',
     'github_user': 'inveniosoftware',
     'github_repo': 'invenio-app-ils',
     'github_button': False,
@@ -315,7 +315,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   (master_doc, 'invenio-app-ils', u'Invenio-App-ILS Documentation',
-   author, 'invenio-app-ils', 'Integrated Library System flavour of Invenio.',
+   author, 'invenio-app-ils', 'E-Ternity flavour of Invenio.',
    'Miscellaneous'),
 ]
 

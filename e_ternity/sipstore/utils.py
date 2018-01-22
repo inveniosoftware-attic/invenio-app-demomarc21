@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This file is part of Invenio.
-# Copyright (C) 2017 CERN.
+# Copyright (C) 2018 CERN.
 #
 # Invenio is free software; you can redistribute it
 # and/or modify it under the terms of the GNU General Public License as
@@ -22,36 +22,22 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-root = true
+"""E-Ternity SIPStore utils module."""
 
-[*]
-indent_style = space
-end_of_line = lf
-insert_final_newline = true
-trim_trailing_whitespace = true
-charset = utf-8
+from invenio_archivematica.models import Archive
 
-# Python files
-[*.py]
-indent_size = 4
-# isort plugin configuration
-known_first_party = e_ternity
-multi_line_output = 2
-default_section = THIRDPARTY
-skip = .eggs
 
-# RST files (used by sphinx)
-[*.rst]
-indent_size = 4
+def archive_directory_builder(sip):
+    """Build a directory structure for the archived SIP.
 
-# CSS, HTML, JS, JSON, YML
-[*.{css,html,js,json,yml}]
-indent_size = 2
-
-# Matches the exact files either package.json or .travis.yml
-[{package.json,.travis.yml}]
-indent_size = 2
-
-# Dockerfile
-[Dockerfile]
-indent_size = 4
+    Creates a structure that is based on the Archive object linked to the SIP.
+    It takes its accession_id. In case no Archive object exists, it returns
+    the ID of the SIP.
+    :param sip: SIP which is to be archived
+    :type SIP: invenio_sipstore.models.SIP
+    :returns: list of str
+    """
+    ark = Archive.get_from_sip(sip.id)
+    if not ark and not ark.accession_id:
+        return [str(sip.id)]
+    return [ark.accession_id]

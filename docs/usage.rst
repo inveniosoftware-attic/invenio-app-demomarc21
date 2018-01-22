@@ -25,4 +25,4 @@
 Usage
 =====
 
-.. automodule:: invenio_app_ils
+.. automodule:: e_ternity

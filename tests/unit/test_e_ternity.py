@@ -29,7 +29,7 @@ from __future__ import absolute_import, print_function
 
 def test_version():
     """Test version import."""
-    from invenio_app_ils import __version__
+    from e_ternity import __version__
     assert __version__
 
 
@@ -37,7 +37,7 @@ def test_import_export(app):
     """Test importing all demo records and exporting to all formats."""
     import pkg_resources
     from dojson.contrib.marc21 import marc21
-    from invenio_app_ils.cli import import_records
+    from e_ternity.cli import import_records
     from invenio_pidstore.models import PersistentIdentifier
 
     with app.app_context():

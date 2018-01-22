@@ -11,29 +11,29 @@ Upgrade pip, setuptools and wheel to make sure you have latest versions:
 
 .. code-block:: console
 
-    $ mkvirtualenv ils
-    (ils)$ pip install --upgrade pip setuptools wheel
+    $ mkvirtualenv eternity
+    (eternity)$ pip install --upgrade pip setuptools wheel
 
-Install Invenio ILS:
+Install Invenio:
 
 .. code-block:: console
 
-   (ils)$ pip install invenio-app-ils[postgresql,elasticsearch2]
+   (eternity)$ pip install .[all,postgresql,elasticsearch2]
 
 Install web assets (JavaScript and CSS dependencies):
 
 .. code-block:: console
 
-   (ils)$ invenio npm
-   (ils)$ cdvirtualenv var/instance/static/
-   (ils)$ npm install
+   (eternity)$ invenio npm
+   (eternity)$ cdvirtualenv var/instance/static/
+   (eternity)$ npm install
 
 Build web assets and collect static files:
 
 .. code-block:: console
 
-   (ils)$ invenio collect -v
-   (ils)$ invenio assets build
+   (eternity)$ invenio collect -v
+   (eternity)$ invenio assets build
 
 Configuration
 -------------
@@ -121,20 +121,20 @@ already):
 
 .. code-block:: console
 
-   (ils)$ invenio db init
+   (eternity)$ invenio db init
 
 Create the database tables:
 
 .. code-block:: console
 
-   (ils)$ invenio db create
+   (eternity)$ invenio db create
 
 Create the search indexes and indexing queue:
 
 .. code-block:: console
 
-    (ils)$ invenio index init
-    (ils)$ invenio index queue init
+    (eternity)$ invenio index init
+    (eternity)$ invenio index queue init
 
 
 .. note::
@@ -144,8 +144,8 @@ Create the search indexes and indexing queue:
 
     .. code-block:: console
 
-        (ils)$ invenio db drop --yes-i-know
-        (ils)$ invenio index destroy --force
+        (eternity)$ invenio db drop --yes-i-know
+        (eternity)$ invenio index destroy --force
 
 Demo data
 ---------
@@ -153,4 +153,4 @@ You can load demo data by simply running:
 
 .. code-block:: console
 
-    (ils)$ invenio demo init
+    (eternity)$ invenio demo init

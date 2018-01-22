@@ -22,7 +22,7 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-"""Default configuraiton for Integrated Library System flavour of Invenio.
+"""Default configuraiton for E-Ternity flavour of Invenio.
 
 The following is an overview of the default ILS configuration for Invenio.
 You may customize the default configuration. Please refer to
@@ -34,6 +34,7 @@ from __future__ import absolute_import, print_function
 
 from datetime import timedelta
 
+from celery.schedules import crontab
 from invenio_marc21.config import MARC21_REST_ENDPOINTS, MARC21_UI_ENDPOINTS, \
     MARC21_UI_EXPORT_FORMATS
 from invenio_records_rest.facets import range_filter, terms_filter
@@ -75,9 +76,9 @@ THEME_SITENAME = _('Invenio')
 #: Use default frontpage.
 THEME_FRONTPAGE = True
 #: Frontpage title.
-THEME_FRONTPAGE_TITLE = _('Integrated Library System')
+THEME_FRONTPAGE_TITLE = _('E-Ternity')
 #: Frontpage template.
-THEME_FRONTPAGE_TEMPLATE = 'invenio_app_ils/frontpage.html'
+THEME_FRONTPAGE_TEMPLATE = 'e_ternity/frontpage.html'
 
 # Assets
 # ======
@@ -182,6 +183,27 @@ SECURITY_EMAIL_SENDER = 'no-reply@localhost'
 #: Elasticsearch index to serve OAI-PMH server from.
 OAISERVER_RECORD_INDEX = 'marc21'
 
+# Sipstore
+# ========
+SIPSTORE_AGENT_JSONSCHEMA_ENABLED = False
+SIPSTORE_ARCHIVER_LOCATION_NAME = 'archive'
+SIPSTORE_ARCHIVER_METADATA_TYPES = ['invenio-json-test']
+SIPSTORE_ARCHIVER_DIRECTORY_BUILDER = \
+    'e_ternity.modules.sipstore.utils.archive_directory_builder'
+
+# Archivematica
+# =============
+ARCHIVEMATICA_ORGANIZATION_NAME = 'E-Ternity'
+ARCHIVEMATICA_TRANSFER_FACTORY = 'invenio_archivematica.factories.transfer_cp'
+ARCHIVEMATICA_TRANSFER_FOLDER = {}
+# Need to be overridden with environment variables
+ARCHIVEMATICA_STORAGE_URL = ''
+ARCHIVEMATICA_STORAGE_USER = ''
+ARCHIVEMATICA_STORAGE_API_KEY = ''
+ARCHIVEMATICA_DASHBOARD_URL = ''
+ARCHIVEMATICA_DASHBOARD_USER = ''
+ARCHIVEMATICA_DASHBOARD_API_KEY = ''
+
 # Celery configuration
 # ====================
 CELERYBEAT_SCHEDULE = {
@@ -204,3 +226,20 @@ every hour.
 
 SEARCH_UI_JSTEMPLATE_FACETS = 'templates/invenio_search_ui/facets.html'
 """Configure the facets template."""
+
+# Celery Cron
+# ===========
+# archive all the new sip that haven't been modified since 15 days at 1 am
+CELERYBEAT_SCHEDULE['archive-sips'] = {
+    'task': 'invenio_archivematica.tasks.archive_new_sips',
+    'schedule': crontab(hour=1),
+    'kwargs': {
+        'accession_id_factory':
+            'e_ternity.modules.archivematica.factory.create_accession_id',
+        'days': 15,
+        'hours': 0,
+        'minutes': 0,
+        'seconds': 0,
+        'delay': True
+    }
+}

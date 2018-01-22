@@ -7,7 +7,7 @@ Invenio-App-ILS v1.0.0a3 was released on August 10, 2017.
 About
 -----
 
-Integrated Library System flavour of Invenio.
+E-Ternity flavour of Invenio.
 
 *This is an experimental developer preview release.*
 

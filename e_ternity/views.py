@@ -22,48 +22,15 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-"""Integrated Library System flavour of Invenio.
-
-Running
--------
-Starting a development server is as simple as:
-
-.. code-block:: console
-
-    $ export FLASK_DEBUG=1
-    $ invenio run
-
-
-.. note::
-
-   You must enable the debug mode as done above to prevent that all
-   connections are forced to HTTPS since the development server does not work
-   with HTTPS.
-
-Celery workers can be started using the command:
-
-.. code-block:: console
-
-    $ celery worker -A invenio_app.celery -l INFO
-
-An interactive Python shell is started with the command:
-
-.. code-block:: console
-
-    $ invenio shell
-
-Demo data
----------
-You can load demo data by simply running:
-
-.. code-block:: console
-
-    $ invenio demo init
-
-"""
+"""Blueprint used for loading templates."""
 
 from __future__ import absolute_import, print_function
 
-from .version import __version__
+from flask import Blueprint
 
-__all__ = ('__version__', )
+blueprint = Blueprint(
+    'e_ternity',
+    __name__,
+    template_folder='templates',
+    static_folder='static',
+)

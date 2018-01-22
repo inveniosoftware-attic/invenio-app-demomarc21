@@ -22,7 +22,7 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-"""Integrated Library System flavour of Invenio."""
+"""E-Ternity flavour of Invenio."""
 
 from __future__ import absolute_import, print_function
 

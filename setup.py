@@ -22,7 +22,7 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-"""Integrated Library System flavour of Invenio."""
+"""E-Ternity flavour of Invenio."""
 
 import os
 
@@ -115,7 +115,13 @@ install_requires = [
     # # Files bundle
     # 'invenio-files-rest>=1.0.0a18,<1.1.0',
     # 'invenio-previewer>=1.0.0a10,<1.1.0',
-    # 'invenio-records-files>=1.0.0a9,<1.1.0',
+    'invenio-records-files>=1.0.0a9,<1.1.0',
+    # Archive bundle
+    # FIXME put a real version when a release has been done
+    # and remove the "dependency_links" line below
+    # along with the "--process-dependency-links" option in the Dockerfile
+    # and in the .travis.yml file
+    'invenio-archivematica>=0.1.0.dev20170825,<1.1.0',
     # MARC21-based ILS
     'invenio-app>=1.0.0b2,<1.1.0',
     'invenio-marc21>=1.0.0a6,<1.1.0',
@@ -126,16 +132,16 @@ packages = find_packages()
 
 # Get the version string. Cannot be done with import!
 g = {}
-with open(os.path.join('invenio_app_ils', 'version.py'), 'rt') as fp:
+with open(os.path.join('e_ternity', 'version.py'), 'rt') as fp:
     exec(fp.read(), g)
     version = g['__version__']
 
 setup(
-    name='invenio-app-ils',
+    name='e-ternity',
     version=version,
     description=__doc__,
     long_description=readme + '\n\n' + history,
-    keywords='invenio ils library system',
+    keywords='invenio e-ternity library system',
     license='GPLv2',
     author='CERN',
     author_email='info@inveniosoftware.org',
@@ -146,19 +152,20 @@ setup(
     platforms='any',
     entry_points={
         'flask.commands': [
-            'demo = invenio_app_ils.cli:demo',
-            'marc21 = invenio_app_ils.cli:marc21_cli',
+            'demo = e_ternity.cli:demo',
+            'marc21 = e_ternity.cli:marc21_cli',
         ],
         'invenio_base.blueprints': [
-            'invenio_app_ils = invenio_app_ils.views:blueprint',
+            'e_ternity = e_ternity.views:blueprint',
         ],
         'invenio_config.module': [
-            'invenio_app_ils = invenio_app_ils.config',
+            'e_ternity = e_ternity.config',
         ],
         'invenio_i18n.translations': [
-            'messages = invenio_app_ils',
+            'messages = e_ternity',
         ],
     },
+    dependency_links=['https://github.com/inveniosoftware/invenio-archivematica/tarball/master#egg=invenio-archivematica-0.1.0.dev20170825'],
     extras_require=extras_require,
     install_requires=install_requires,
     setup_requires=setup_requires,
