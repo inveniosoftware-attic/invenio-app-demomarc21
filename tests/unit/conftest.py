@@ -29,48 +29,10 @@ from __future__ import absolute_import, print_function
 import os
 
 import pytest
-from invenio_app.factory import create_app
-from invenio_db import db as db_
-from sqlalchemy_utils.functions import create_database, database_exists
-
-
-@pytest.fixture(scope='module', autouse=True)
-def base_app(tmpdir_factory):
-    """Flask application fixture."""
-    tmpdir = tmpdir_factory.mktemp('data')
-    sqlite = 'sqlite:///{filepath}'.format(
-        filepath=tmpdir.join('unit-test.db')
-    )
-
-    app_ = create_app(
-        DEBUG_TB_ENABLED=False,
-        SQLALCHEMY_DATABASE_URI=os.environ.get(
-            'SQLALCHEMY_DATABASE_URI',
-            sqlite),
-        SECRET_KEY="CHANGE_ME",
-        SECURITY_PASSWORD_SALT="CHANGE_ME",
-        TESTING=True,
-        DEBUG=True,
-    )
-
-    with app_.app_context():
-        yield app_
+from invenio_app.factory import create_ui
 
 
 @pytest.fixture(scope='module')
-def db():
-    """Setup database."""
-    if not database_exists(str(db_.engine.url)):
-        create_database(str(db_.engine.url))
-    db_.create_all()
-
-    yield db_
-
-    db_.session.remove()
-    db_.drop_all()
-
-
-@pytest.fixture()
-def app(base_app, db):
+def create_app():
     """Flask application fixture."""
-    yield base_app
+    return create_ui

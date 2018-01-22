@@ -32,16 +32,17 @@ readme = open('README.rst').read()
 history = open('CHANGES.rst').read()
 
 tests_require = [
+    'pytest-invenio>=1.0.0a1,<1.1.0',
     'check-manifest>=0.35',
     'coverage>=4.4.1',
-    'isort>=4.2.15',
+    'isort>=4.3',
     'pydocstyle>=2.0.0',
     'pytest-cache>=1.0',
     'pytest-cov>=2.5.1',
     'pytest-pep8>=1.0.6',
-    'pytest>=3.3.1',
+    'pytest>=3.1.3',
     'pytest-flask>=0.10.0',
-    'selenium>=3.4.3',
+    'selenium>=3.4.3'
 ]
 
 invenio_db_version = '>=1.0.0b9,<1.1.0'
@@ -80,7 +81,7 @@ for name, reqs in extras_require.items():
 
 setup_requires = [
     'Babel>=1.3',
-    'pytest-runner>=2.6.2',
+    'pytest-runner>=3.0.0,<5',
 ]
 
 install_requires = [
@@ -100,8 +101,8 @@ install_requires = [
     # Auth bundle
     'invenio-access>=1.0.0b1,<1.1.0',
     'invenio-accounts>=1.0.0b12,<1.1.0',
-    'invenio-oauth2server>=1.0.0b3,<1.1.0',
-    'invenio-oauthclient>=1.0.0b3,<1.1.0',
+    'invenio-oauth2server>=1.0.0b4,<1.1.0',
+    'invenio-oauthclient>=1.0.0b5,<1.1.0',
     'invenio-userprofiles>=1.0.0b2,<1.1.0',
     # Metadata bundle
     'invenio-indexer>=1.0.0b1,<1.1.0',
