@@ -22,7 +22,6 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-curl -XDELETE localhost:9200/*
 invenio db destroy --yes-i-know
 invenio db init create
 invenio index queue init

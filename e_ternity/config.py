@@ -35,6 +35,7 @@ from __future__ import absolute_import, print_function
 from datetime import timedelta
 
 from celery.schedules import crontab
+from invenio_app.config import APP_DEFAULT_SECURE_HEADERS
 from invenio_marc21.config import MARC21_REST_ENDPOINTS, MARC21_UI_ENDPOINTS, \
     MARC21_UI_EXPORT_FORMATS
 from invenio_records_rest.facets import range_filter, terms_filter
@@ -44,6 +45,9 @@ def _(x):
     """Identity function used to trigger string extraction."""
     return x
 
+# Https should be enforced by any reverse proxy in front of the app
+APP_DEFAULT_SECURE_HEADERS['force_https'] = False
+APP_DEFAULT_SECURE_HEADERS['session_cookie_secure'] = False
 
 # I18N
 # ====

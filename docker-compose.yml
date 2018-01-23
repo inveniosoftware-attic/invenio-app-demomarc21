@@ -1,0 +1,106 @@
+# -*- coding: utf-8 -*-
+#
+# This file is part of Invenio.
+# Copyright (C) 2018 CERN.
+#
+# Invenio is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# Invenio is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Invenio; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+# MA 02111-1307, USA.
+#
+# In applying this license, CERN does not
+# waive the privileges and immunities granted to it by virtue of its status
+# as an Intergovernmental Organization or submit itself to any jurisdiction.
+
+# README
+# ======
+#
+# This docker setup will create a demo site which will be run in debug mode.
+# It authorizes you to develop code locally, and it will automatically update
+# the demo site with your changes.
+#
+# Run the following commands:
+# $ docker-compose build
+# $ docker-compose up [-d]
+# $ docker-compose exec -it web /opt/e-ternity/src/scripts/setup-instance.sh
+
+version: '2.1'
+services:
+  # Application
+  web:
+    extends:
+      file: docker-services.yml
+      service: app
+    command: invenio run -h 0.0.0.0 -p 5000
+    environment:
+      - "FLASK_DEBUG=1"
+      - "INVENIO_SESSION_COOKIE_SECURE=False"
+      # Archivematica
+      - "INVENIO_ARCHIVEMATICA_STORAGE_URL=http://your-archivematica-storage.cern.ch"
+      - "INVENIO_ARCHIVEMATICA_STORAGE_USER=username"
+      - "INVENIO_ARCHIVEMATICA_STORAGE_API_KEY="
+      - "INVENIO_ARCHIVEMATICA_DASHBOARD_URL=http://your-archivematica-dashboard.cern.ch"
+      - "INVENIO_ARCHIVEMATICA_DASHBOARD_USER=username"
+      - "INVENIO_ARCHIVEMATICA_DASHBOARD_API_KEY="
+    ports:
+      - "5000:5000"
+    links:
+      - cache
+      - es
+      - mq
+      - db
+  # Worker
+  worker:
+    extends:
+      file: docker-services.yml
+      service: app
+    restart: "always"
+    command: "celery worker -A invenio_app.celery --loglevel=INFO"
+    links:
+      - cache
+      - es
+      - mq
+      - db
+    environment:
+      - "FLASK_DEBUG=1"
+      # Archivematica
+      - "INVENIO_ARCHIVEMATICA_STORAGE_URL=http://your-archivematica-storage.cern.ch"
+      - "INVENIO_ARCHIVEMATICA_STORAGE_USER=username"
+      - "INVENIO_ARCHIVEMATICA_STORAGE_API_KEY="
+      - "INVENIO_ARCHIVEMATICA_DASHBOARD_URL=http://your-archivematica-dashboard.cern.ch"
+      - "INVENIO_ARCHIVEMATICA_DASHBOARD_USER=username"
+      - "INVENIO_ARCHIVEMATICA_DASHBOARD_API_KEY="
+  # Monitoring
+  flower:
+    extends:
+      file: docker-services.yml
+      service: flower
+    links:
+      - mq
+  # Base services
+  cache:
+    extends:
+      file: docker-services.yml
+      service: cache
+  db:
+    extends:
+      file: docker-services.yml
+      service: db
+  mq:
+    extends:
+      file: docker-services.yml
+      service: mq
+  es:
+    extends:
+      file: docker-services.yml
+      service: es

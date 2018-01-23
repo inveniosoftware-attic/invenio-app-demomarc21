@@ -1,0 +1,79 @@
+# -*- coding: utf-8 -*-
+#
+# This file is part of Invenio.
+# Copyright (C) 2018 CERN.
+#
+# Invenio is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# Invenio is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Invenio; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+# MA 02111-1307, USA.
+#
+# In applying this license, CERN does not
+# waive the privileges and immunities granted to it by virtue of its status
+# as an Intergovernmental Organization or submit itself to any jurisdiction.
+
+version: '2.1'
+services:
+  app:
+    build:
+      context: .
+      args:
+        - ENVIRONMENT=DEV
+    image: e-ternity:latest
+    environment:
+      - "INVENIO_ACCOUNTS_SESSION_REDIS_URL=redis://cache:6379/1"
+      - "INVENIO_BROKER_URL=amqp://guest:guest@mq:5672/"
+      - "INVENIO_CACHE_REDIS_URL=redis://cache:6379/0"
+      - "INVENIO_CACHE_TYPE=redis"
+      - "INVENIO_CELERY_BROKER_URL=amqp://guest:guest@mq:5672/"
+      - "INVENIO_CELERY_RESULT_BACKEND=redis://cache:6379/2"
+      - "INVENIO_SEARCH_ELASTIC_HOSTS=['es:9200']"
+      - "INVENIO_SECRET_KEY=CHANGE_ME"
+      - "INVENIO_SESSION_COOKIE_SECURE=True"
+      - "INVENIO_SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://admin:postgres@db/eternity"
+      - "INVENIO_WSGI_PROXIES=2"
+  cache:
+    image: redis
+    restart: "always"
+    read_only: true
+    ports:
+      - "6379:6379"
+  db:
+    build: ./docker/postgres/
+    image: e-ternity-postgres
+    command: postgres
+    restart: "always"
+    environment:
+      - "POSTGRES_PASSWORD=postgres"
+      - "POSTGRES_USER=admin"
+    ports:
+      - "5432:5432"
+  mq:
+    image: rabbitmq:3-management
+    restart: "always"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+  es:
+    build: ./docker/es/
+    image: e-ternity-es:2.4.6
+    restart: "always"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  flower:
+    image: mher/flower
+    command: --broker=amqp://guest:guest@mq:5672/ --broker_api=http://guest:guest@mq:15672/api/
+    ports:
+      - "5555:5555"
+
