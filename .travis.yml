@@ -32,17 +32,15 @@ sudo: true
 dist: trusty # Chrome driver fails if not trusty dist
 
 notifications:
-  email: # sent to the committer and the author
-    on_success: never # default: always
-    on_failure: always # default: always
+  email: false
 
-  webhooks: # Gitter integration
-        urls:
-          - https://webhooks.gitter.im/e/f51458fa35835a48601a
-        # options: [always|never|change]
-        on_success: never    # default: always
-        on_failure: always   # default: always
-        on_start: never      # default: never
+  # webhooks: # Gitter integration
+  #       urls:
+  #         - https://webhooks.gitter.im/e/f51458fa35835a48601a
+  #       # options: [always|never|change]
+  #       on_success: never    # default: always
+  #       on_failure: always   # default: always
+  #       on_start: never      # default: never
 
         # not passing travis yaml validator, but specified in the doc
         # on_cancel: never     # default: always
